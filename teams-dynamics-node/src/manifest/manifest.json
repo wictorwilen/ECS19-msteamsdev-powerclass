@@ -1,0 +1,132 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OfficeDev/microsoft-teams-app-schema/preview/DevPreview/MicrosoftTeams.schema.json",
+  "manifestVersion": "devPreview",
+  "id": "1c343624-084b-4636-9765-196efeace67f",
+  "version": "0.0.1",
+  "packageName": "dynamicteams",
+  "developer": {
+    "name": "Wictor Wilen",
+    "websiteUrl": "https://{{HOSTNAME}}",
+    "privacyUrl": "https://{{HOSTNAME}}/privacy.html",
+    "termsOfUseUrl": "https://{{HOSTNAME}}/tou.html"
+  },
+  "name": {
+    "short": "Field Service",
+    "full": "Field Service"
+  },
+  "description": {
+    "short": "Manage your Microsoft Dynamics 365 Field Service cases in Microsoft Teams",
+    "full": "Manage your Microsoft Dynamics 365 Field Service cases in Microsoft Teams"
+  },
+  "icons": {
+    "outline": "icon-outline.png",
+    "color": "icon-color.png"
+  },
+  "accentColor": "#7202DC",
+  "configurableTabs": [
+    {
+      "configurationUrl": "https://{{HOSTNAME}}/casesTab/config.html",
+      "canUpdateConfiguration": true,
+      "scopes": [
+        "team",
+        "groupchat"
+      ],
+      "supportedSharePointHosts": [
+        "sharePointFullPage",
+        "sharePointWebPart"
+      ]
+    }
+  ],
+  "staticTabs": [],
+  "bots": [
+    {
+      "botId": "{{MICROSOFT_APP_ID}}",
+      "needsChannelSelector": true,
+      "isNotificationOnly": false,
+      "scopes": [
+        "team",
+        "personal",
+        "groupchat"
+      ],
+      "commandLists": [
+        {
+          "scopes": [
+            "team",
+            "personal"
+          ],
+          "commands": [
+            {
+              "title": "Help",
+              "description": "Shows help information"
+            },
+            {
+              "title": "Hello",
+              "description": "kjasdlaskjla"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "connectors": [
+    {
+      "connectorId": "{{CONNECTOR_ID}}",
+      "configurationUrl": "https://{{HOSTNAME}}/casesConnector/config.html",
+      "scopes": [
+        "team"
+      ]
+    }
+  ],
+  "composeExtensions": [
+    {
+      "botId": "{{MICROSOFT_APP_ID}}",
+      "canUpdateConfiguration": true,
+      "commands": [
+        {
+          "id": "casesMessageExtension",
+          "title": "Cases",
+          "description": "Lookup cases in Dynamics 365",
+          "initialRun": true,
+          "parameters": [
+            {
+              "name": "parameter",
+              "description": "Search keyword",
+              "title": "Parameter"
+            }
+          ],
+          "type": "query"
+        },
+        {
+          "id": "createIncidentMessageExtension",
+          "title": "Create Incident",
+          "description": "Add a clever description here",
+          "initialRun": true,
+          "type": "action",
+          "context": [
+            "message"
+          ],
+          "fetchTask": true
+        }
+      ],
+      "messageHandlers": [
+        {
+          "type": "link",
+          "value": {
+            "domains": [
+              "*.crm4.dynamics.com"
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "permissions": [
+    "identity",
+    "messageTeamMembers"
+  ],
+  "validDomains": [
+    "{{HOSTNAME}}",
+    "token.botframework.com",
+    "login.microsoftonline.com"
+  ]
+}
