@@ -1,0 +1,109 @@
+{
+	"$schema": "https://raw.githubusercontent.com/OfficeDev/microsoft-teams-app-schema/preview/DevPreview/MicrosoftTeams.schema.json",
+	"manifestVersion": "devPreview",
+	"version": "1.0",
+	"id": "79c4a5d1-3edb-4526-b4bb-107bcdc1f5ee",
+	"packageName": "team.ecs.paulapp",
+	"developer": {
+		"name": "Paul Schaeflein",
+		"websiteUrl": "https://addin365.com",
+		"privacyUrl": "https://scon.ngrok.io/privacy.htm",
+		"termsOfUseUrl": "https://scon.ngrok.io/tou"
+	},
+	"name": {
+		"short": "ECS PS",
+		"full": "ECS Power Class - Paul's app"
+	},
+	"description": {
+		"short": "Teams App for the ECS 2019 Power class",
+		"full": "Created by Paul using Visual Studio"
+	},
+	"icons": {
+		"outline": "outline.png",
+		"color": "color.png"
+	},
+	"accentColor": "#abcdef",
+	"bots": [
+		{
+			"botId": "7c21e333-dd5d-4d62-9fdf-5de2cda68b07",
+			"scopes": [ "personal", "team" ]
+		}
+	],
+	"composeExtensions": [
+		{
+			"botId": "7c21e333-dd5d-4d62-9fdf-5de2cda68b07",
+			"commands": [
+				{
+					"id": "queryCards",
+					"description": "Test command to run query",
+					"title": "Query cards",
+					"parameters": [
+						{
+							"name": "queryText",
+							"title": "Query parameter",
+							"description": "Query parameter"
+						}
+					]
+				},
+				{
+					"id": "createCard",
+					"type": "action",
+					"description": "Test command to run action to create a card",
+					"title": "Create cards",
+					"fetchTask": true,
+					"parameters": [
+						{
+							"name": "dummy",
+							"title": "Dummy parameter",
+							"description": "Dummy parameter"
+						}
+					]
+				},
+				{
+					"id": "createWithPreview",
+					"type": "action",
+					"description": "Test command to run action to create a card with preview before sending",
+					"title": "Create cards with preview",
+					"fetchTask": true,
+					"parameters": [
+						{
+							"name": "dummy",
+							"title": "Dummy parameter",
+							"description": "Dummy parameter"
+						}
+					]
+				},
+				{
+					"id": "shareMessage",
+					"type": "action",
+					"context": [ "message" ],
+					"description": "Test command to run action on message context (message sharing)",
+					"title": "Create cards",
+					"fetchTask": true,
+					"parameters": [
+						{
+							"name": "dummy",
+							"title": "Dummy parameter",
+							"description": "Dummy parameter"
+						}
+					]
+				}
+			],
+			"messageHandlers": [
+				{
+					"type": "link",
+					"value": {
+						"domains": [
+							"*.azurewebsites.net",
+							"*.example.com"
+						]
+					}
+				}
+			]
+		}
+	],
+	"validDomains": [
+		"*.azurewebsites.net",
+		"*.example.com"
+	]
+}

@@ -1,0 +1,18 @@
+{
+    "name": "MessagingExtensionBot",
+    "description": "",
+    "services": [
+			{
+				"type": "endpoint",
+				"appId": "44999612-7c95-4a92-8db6-3bde8f94caf1",
+				"appPassword": "udgZSFW502}mkgwUYK90){=",
+				"endpoint": "http://localhost:3978/api/messages",
+				"id": "1",
+				"name": "development"
+			}
+    ],
+    "padlock": "",
+    "version": "2.0",
+    "path": "C:\\Dev\\ECS\\Bot\\Microsoft.Bot.Builder.Teams.MessagingExtensionBot\\BotConfiguration.bot",
+    "overrides": null
+}

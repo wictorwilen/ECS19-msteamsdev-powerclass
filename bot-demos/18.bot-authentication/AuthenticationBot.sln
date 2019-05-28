@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.28803.452
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AuthenticationBot", "AuthenticationBot.csproj", "{EA988BC7-F3CB-4B57-AA39-16268C2D7E53}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EA988BC7-F3CB-4B57-AA39-16268C2D7E53}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EA988BC7-F3CB-4B57-AA39-16268C2D7E53}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EA988BC7-F3CB-4B57-AA39-16268C2D7E53}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EA988BC7-F3CB-4B57-AA39-16268C2D7E53}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {26DB93DC-C442-432A-B9C4-E9759C8B2789}
+	EndGlobalSection
+EndGlobal

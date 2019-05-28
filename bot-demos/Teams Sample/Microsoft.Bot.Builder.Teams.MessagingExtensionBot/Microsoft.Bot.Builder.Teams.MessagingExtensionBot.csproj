@@ -1,0 +1,68 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <DebugType>Full</DebugType>
+  </PropertyGroup>
+
+  <ItemGroup>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="Microsoft.Bot.Builder.Integration.AspNet.Core" Version="4.3.2" />
+    <PackageReference Include="Microsoft.Bot.Builder.Teams" Version="4.3.0-beta1" />
+    <PackageReference Include="Microsoft.Bot.Configuration" Version="4.3.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Microsoft.Bot.Builder.Abstractions.Teams\Microsoft.Bot.Builder.Abstractions.Teams.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="BotConfiguration.bot">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+	<Target Name="CustomAfterBuild" AfterTargets="Build">
+		<ZipDir InputBaseDirectory="TeamsAppManifest" OutputFileName="$(OutputPath)\$(MSBuildProjectName).zip" OverwriteExistingFile="true" IncludeBaseDirectory="false" />
+	</Target>
+	<UsingTask TaskName="ZipDir" TaskFactory="CodeTaskFactory" AssemblyFile="$(MSBuildToolsPath)\Microsoft.Build.Tasks.v4.0.dll">
+		<ParameterGroup>
+			<InputBaseDirectory ParameterType="System.String" Required="true" />
+			<OutputFileName ParameterType="System.String" Required="true" />
+			<OverwriteExistingFile ParameterType="System.Boolean" Required="false" />
+			<IncludeBaseDirectory ParameterType="System.Boolean" Required="false" />
+		</ParameterGroup>
+		<Task>
+			<Reference Include="System.IO.Compression" />
+			<Reference Include="System.IO.Compression.FileSystem" />
+			<Using Namespace="System.IO.Compression" />
+			<Code Type="Fragment" Language="cs">
+				<![CDATA[
+      if (File.Exists(OutputFileName))
+      {
+        if (!OverwriteExistingFile)
+        {
+          return false;
+        }
+        File.Delete(OutputFileName);
+      }
+      ZipFile.CreateFromDirectory
+      (
+        InputBaseDirectory, OutputFileName,
+        CompressionLevel.Optimal, IncludeBaseDirectory
+      );
+    ]]>
+			</Code>
+		</Task>
+	</UsingTask>
+</Project>
